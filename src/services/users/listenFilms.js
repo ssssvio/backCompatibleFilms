@@ -3,14 +3,12 @@ async function listenFilms(dataFilm) {
 
     try {
 
-        if (name || 1) return {
+        if (!name) return {
             error: {
-                codigo: 505,
-                mensagem: "acertou miseravi"
+                code: 503,
+                message: "acertou aqui"
             }
         }
-
-        console.log("aqui nao chega");
 
     } catch (error) {
         return await (error.message)
