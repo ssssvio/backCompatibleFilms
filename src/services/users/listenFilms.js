@@ -1,3 +1,5 @@
+const { knexdb } = require("../../db/conection");
+
 async function listenFilms(dataFilm) {
     const { name } = dataFilm;
 
@@ -5,10 +7,13 @@ async function listenFilms(dataFilm) {
 
         if (!name) return {
             error: {
-                code: 503,
-                message: "acertou aqui"
+                code: 400,
+                message: "Insira o nome da pelpicula!"
             }
         }
+
+        const consulta = knexdb('nometabela')
+
 
     } catch (error) {
         return await (error.message)

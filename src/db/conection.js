@@ -1,4 +1,4 @@
-exports.knex = require('knex')({
+exports.knexdb = require('knex')({
     client: 'pg',
     connection: {
         host: process.env.DB_HOST,
