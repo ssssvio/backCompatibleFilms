@@ -12,8 +12,7 @@ async function listenFilms(dataFilm) {
             }
         }
 
-        const consulta = knexdb('nometabela')
-
+        const consulta = knexdb('nometabela');
 
     } catch (error) {
         return await (error.message)
