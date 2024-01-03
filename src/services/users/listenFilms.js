@@ -7,7 +7,7 @@ async function listenFilms(dataFilm) {
     try {
 
         await schemaListen.validateAsync(dataFilm);
-        const consulta = knexdb('nometabela');
+        const consult = knexdb('qualquercoisa');
 
     } catch (error) {
         return await (error.message)
