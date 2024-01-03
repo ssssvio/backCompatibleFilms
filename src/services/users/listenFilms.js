@@ -7,12 +7,15 @@ async function listenFilms(dataFilm) {
     try {
 
         await schemaListen.validateAsync(dataFilm);
-        // const consult = knexdb('qualquercoisa');
 
-        return { success: true, data: true, statusCode: 200 };
+        const consult = await knexdb('films').where({ name }).debug(true).first();
+
+        // if (!consult) return error = { message: "Película não encontrada", statusCode: 404 };
+
+        return { success: true, data: consult, statusCode: 200 };
 
     } catch (error) {
-        return { success: false, error: error.message, statusCode: 400 };
+        return { success: false, error: error.message, statusCode: statusCode || 400 };
     }
 }
 
