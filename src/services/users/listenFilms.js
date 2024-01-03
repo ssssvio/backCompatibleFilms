@@ -11,6 +11,7 @@ async function listenFilms(dataFilm) {
         return { success: true, data: consult, statusCode: 200 };
 
     } catch (error) {
+        const statusCode = error.statusCode || 400;
         return { success: false, error: error.message, statusCode };
     }
 }

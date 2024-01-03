@@ -5,7 +5,7 @@ async function listen(req, res) {
 
     if (error) return res.status(statusCode).json({ message: error });
 
-    return res.status(200).json(data.compatiblefilms);
+    return res.status(200).json({ result: data.compatiblefilms });
 }
 
 module.exports = { listen };
