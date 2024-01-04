@@ -1,5 +1,5 @@
-const { knexdb } = require("../../db/conection");
-const { schemaListen } = require("../../utils/users/schemaListen");
+const { knexdb } = require("../db/conection");
+const { schemaListen } = require("../utils/schemaListen");
 
 async function listenFilms(dataFilm) {
     const { name } = dataFilm;
@@ -7,7 +7,7 @@ async function listenFilms(dataFilm) {
 
         await schemaListen.validateAsync(dataFilm);
         const consult = await knexdb('films').where({ name }).first();
-        if (!consult) return { error: "Película não encontrada", statusCode: 404 };
+        if (!consult) return { error: "Película não encontrada!", statusCode: 404 };
         return { success: true, data: consult, statusCode: 200 };
 
     } catch (error) {

@@ -1,5 +1,5 @@
 const express = require("express");
-const { listen } = require("../controllers/users/listen");
+const { listen } = require("../controllers/listen");
 const routes = express.Router();
 
 routes.get('/peliculas', listen);
