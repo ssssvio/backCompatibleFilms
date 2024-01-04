@@ -6,12 +6,13 @@ async function listenFilms(dataFilm) {
     try {
 
         await schemaListen.validateAsync(dataFilm);
-        const consult = await knexdb('films').where({ name }).first();
+        const consult = await knexdb('films').where({ name }).orWhere('compatiblefilms', 'like', `%${name}%`).first();
         if (!consult) return { error: "Película não encontrada!", statusCode: 404 };
-        return { success: true, data: consult, statusCode: 200 };
+        const compatibles = consult.compatiblefilms.split('-');
+        return { success: true, data: compatibles, statusCode: 200 };
 
     } catch (error) {
-        const statusCode = error.statusCode || 400;
+        const statusCode = (error.statusCode || 400);
         return { success: false, error: error.message, statusCode };
     }
 }
