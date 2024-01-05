@@ -12,8 +12,23 @@ async function listenFilms(dataFilm) {
             .leftJoin('compatiblemodels', 'models.id', '=', 'compatiblemodels.models_id')
             .where('models.name', name);
 
+        // Usando map para transformar o resultado
+        const transformedResult = modelsResult.reduce((acc, model) => {
+            const existingModel = acc.find(item => item.modelName === model.modelName);
 
-        return { success: true, data: modelsResult, statusCode: 200 };
+            if (existingModel) {
+                existingModel.compatibleModels.push(model.compatibleModels);
+            } else {
+                acc.push({
+                    modelName: model.modelName,
+                    compatibleModels: [model.compatibleModels]
+                });
+            }
+
+            return acc;
+        }, []);
+
+        return { success: true, data: transformedResult, statusCode: 200 };
 
     } catch (error) {
         const statusCode = (error.statusCode || 400);
