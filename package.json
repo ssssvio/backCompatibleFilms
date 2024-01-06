@@ -4,7 +4,8 @@
   "description": "### Backend para consulta de películas para técnicos de celulares.",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./src/index.js"
+    "dev": "nodemon ./src/index.js",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
