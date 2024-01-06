@@ -10,11 +10,11 @@ async function listenFilms(dataFilm) {
         const modelsResult = await queryModelsByName(name);
         if (modelsResult.length < 1) return { error: "Film not found!", statusCode: 404 };
 
-        const consultModels = modelsResult[0].compatiblemodels;
+        const consultModels = modelsResult.compatiblemodels;
         if (consultModels.length < 2) {
-            const twoConsult = modelsResult[0].modelName;
-            const modelsResult2 = await queryModelsByName(twoConsult);
-            return { success: true, data: modelsResult2, statusCode: 200 };
+            const reModelName = modelsResult.modelName;
+            const reModelsResult = await queryModelsByName(reModelName);
+            return { success: true, data: reModelsResult, statusCode: 200 };
         }
 
         return { success: true, data: modelsResult, statusCode: 200 };

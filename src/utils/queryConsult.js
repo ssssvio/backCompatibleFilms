@@ -9,7 +9,8 @@ async function queryModelsByName(name) {
             builder.where('models.name', name)
                 .orWhere('compatiblemodels.compatible_models', name);
         })
-        .groupBy('models.name');
+        .groupBy('models.name')
+        .first();
 };
 
 module.exports = { queryModelsByName };
