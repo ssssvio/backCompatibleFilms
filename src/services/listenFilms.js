@@ -10,7 +10,10 @@ async function listenFilms(dataFilm) {
             .select('models.name as modelName')
             .select(knexdb.raw('ARRAY_AGG(compatiblemodels.compatible_models) as compatibleModels'))
             .leftJoin('compatiblemodels', 'models.id', '=', 'compatiblemodels.models_id')
-            .where('models.name', name)
+            .where(builder => {
+                builder.where('models.name', name)
+                    .orWhereIn('compatiblemodels.compatible_models', [name]);
+            })
             .groupBy('models.name');
 
         if (modelsResult.length < 1) return { error: "Película não encontrada!", statusCode: 404 };
