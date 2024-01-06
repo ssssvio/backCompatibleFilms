@@ -11,3 +11,5 @@ async function queryModelsByName(name) {
         })
         .groupBy('models.name');
 };
+
+module.exports = { queryModelsByName };
