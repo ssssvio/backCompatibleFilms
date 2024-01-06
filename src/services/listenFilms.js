@@ -12,9 +12,15 @@ async function listenFilms(dataFilm) {
             .leftJoin('compatiblemodels', 'models.id', '=', 'compatiblemodels.models_id')
             .where(builder => {
                 builder.where('models.name', name)
-                    .orWhereIn('compatiblemodels.compatible_models', [name]);
+                    .orWhere('compatiblemodels.compatible_models', name);
             })
             .groupBy('models.name');
+
+        const consult = modelsResult[0].compatiblemodels[0];
+        console.log(typeof consult);
+        // if (modelsResult.compatiblemodels === 1) {
+        //     console.log(true);
+        // }
 
         if (modelsResult.length < 1) return { error: "Película não encontrada!", statusCode: 404 };
         return { success: true, data: modelsResult, statusCode: 200 };
