@@ -6,33 +6,15 @@ async function listenFilms(dataFilm) {
     try {
 
         await schemaListen.validateAsync(dataFilm);
-
         const modelsResult = await knexdb('models')
-            .select('models.name as modelName', 'compatiblemodels.compatible_models as compatibleModels')
+            .select('models.name as modelName')
+            .select(knexdb.raw('ARRAY_AGG(compatiblemodels.compatible_models) as compatibleModels'))
             .leftJoin('compatiblemodels', 'models.id', '=', 'compatiblemodels.models_id')
-            .where('models.name', name);
+            .where('models.name', name)
+            .groupBy('models.name');
 
-        // pegar o principal e colocar como modelName.
-        // olhar da um da lista
-        // comparar cada um se for diferente colocar na outra lista.
-
-        // const transformedResult = modelsResult.reduce((acc, model) => {
-        // const existingModel = acc.find(item => item.modelName === model.modelName);
-
-
-        //     if (existingModel) {
-        //         existingModel.compatibleModels.push(model.compatibleModels);
-        //     } else {
-        //         acc.push({
-        //             modelName: model.modelName,
-        //             compatibleModels: [model.compatibleModels]
-        //         });
-        //     }
-
-        //     return acc;
-        // }, []);
-
-        return { success: true, data: transformedResult, statusCode: 200 };
+        if (modelsResult.length < 1) return { error: "Película não encontrada!", statusCode: 404 };
+        return { success: true, data: modelsResult, statusCode: 200 };
 
     } catch (error) {
         const statusCode = (error.statusCode || 400);
