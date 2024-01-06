@@ -8,7 +8,7 @@ async function listenFilms(dataFilm) {
 
         await schemaListen.validateAsync(dataFilm);
         const modelsResult = await queryModelsByName(name);
-        if (modelsResult.length < 1) return { error: "Película não encontrada!", statusCode: 404 };
+        if (modelsResult.length < 1) return { error: "Film not found!", statusCode: 404 };
 
         const consultModels = modelsResult[0].compatiblemodels;
         if (consultModels.length < 2) {
