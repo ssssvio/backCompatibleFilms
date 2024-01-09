@@ -14,6 +14,7 @@ async function listenFilms(dataFilm) {
         if (consultModels.length < 2) {
             const reModelName = modelsResult.modelName;
             const reModelsResult = await queryModelsByName(reModelName);
+            if (reModelsResult.length < 1) return { error: "Film not found!", statusCode: 404 };
             return { success: true, data: reModelsResult, statusCode: 200 };
         }
 
