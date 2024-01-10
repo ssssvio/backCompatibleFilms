@@ -22,7 +22,8 @@ INSERT INTO brand (name) VALUES
     ('iPhone'),
     ('Motorola'),
     ('LG'),
-    ('Xiaomi');
+    ('Xiaomi'),
+    ('Realme')
 
 INSERT INTO models (name, brand_id) VALUES
 1-    ('A12', 1),
@@ -40,6 +41,7 @@ INSERT INTO models (name, brand_id) VALUES
 12-   ('Note 10', 5),
 13-   ('A01', 1),
 14-   ('Note 12 Pro', 5),
+15-   ('Poco C55', 6),
 
 -- deixar so o nome sem a marca antes
 INSERT INTO compatiblemodels (models_id, compatible_models) VALUES
@@ -82,3 +84,6 @@ INSERT INTO compatiblemodels (models_id, compatible_models) VALUES
     (13, 'M01'),
     (14, 'Poco X5'),
     (14, 'Poco X5 Pro'),
+    (15, 'Poco C55'),
+    (15, 'Poco C53'),
+    (15, 'Poco C35'),
