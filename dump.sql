@@ -24,14 +24,16 @@ INSERT INTO brand (name) VALUES
     ('Xiaomi');
 
 INSERT INTO models (name, brand_id) VALUES
-    ('A12', 1),
-    ('iPhone 7', 2),
-    ('iPhone 7 Plus', 2),
-    ('iPhone X', 2),
-    ('iPhone Xr', 2),
-    ('iPhone Xs Max', 2),
-    ('A10s', 1);
-    ('A11', 1);
+1-    ('A12', 1),
+2-    ('iPhone 7', 2),
+3-    ('iPhone 7 Plus', 2),
+4-    ('iPhone X', 2),
+5-    ('iPhone Xr', 2),
+6-    ('iPhone Xs Max', 2),
+7-    ('A10s', 1),
+8-    ('A11', 1),
+9-    ('iPhone 15 Pro Max', 2),
+10-   ('iPhone 15 Pro', 2),
 
 INSERT INTO compatiblemodels (models_id, compatible_models) VALUES
     (1, 'A13'),
@@ -62,3 +64,4 @@ INSERT INTO compatiblemodels (models_id, compatible_models) VALUES
     (7, 'Moto G7'),
     (7, 'LG K40s'),
     (7, 'Note 8'),
+    (9, 'iPhone 15 Plus'),
