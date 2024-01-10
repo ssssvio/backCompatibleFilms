@@ -34,6 +34,7 @@ INSERT INTO models (name, brand_id) VALUES
 8-    ('A11', 1),
 9-    ('iPhone 15 Pro Max', 2),
 10-   ('iPhone 15 Pro', 2),
+11-   ('iPhone 14 Pro', 2),
 
 INSERT INTO compatiblemodels (models_id, compatible_models) VALUES
     (1, 'A13'),
@@ -65,3 +66,5 @@ INSERT INTO compatiblemodels (models_id, compatible_models) VALUES
     (7, 'LG K40s'),
     (7, 'Note 8'),
     (9, 'iPhone 15 Plus'),
+    (10, 'iPhone 15'),
+    (11, 'iPhone 14'),
