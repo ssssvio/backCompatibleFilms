@@ -50,7 +50,7 @@ INSERT INTO models (name, brand_id) VALUES
 
 -- deixar so o nome sem a marca antes
 -- deixar a pessoa escrever como quiser, quando passar pelo back end 
--- passar a req tudo pra minusculo e deixar todo banco de dado em minusculo
+-- passar a req tudo pra maisculo e deixar todo banco de dado em minusculo
 
 INSERT INTO compatiblemodels (models_id, compatible_models) VALUES
     (1, 'A13'),
