@@ -35,15 +35,23 @@ INSERT INTO models (name, brand_id) VALUES
 7-    ('A10s', 1),
 8-    ('A11', 1),
 
-9-    ('iPhone 15 Pro Max', 2),
+9-    ('iPhone 13 Pro Max', 2),
 10-   ('iPhone 15 Pro', 2),
 11-   ('iPhone 14 Pro', 2),
 12-   ('Note 10', 5),
 13-   ('A01', 1),
 14-   ('Note 12 Pro', 5),
 15-   ('Poco C55', 6),
+16-   ('Note 12', 5),
+17-   ('Note 11', 5),
+18-   ('iPhone 12', 2),
+19-   ('iPhone 13', 2),
+20-   ('A52', 1),
 
 -- deixar so o nome sem a marca antes
+-- deixar a pessoa escrever como quiser, quando passar pelo back end 
+-- passar a req tudo pra minusculo e deixar todo banco de dado em minusculo
+
 INSERT INTO compatiblemodels (models_id, compatible_models) VALUES
     (1, 'A13'),
     (1, 'A22'),
@@ -74,7 +82,7 @@ INSERT INTO compatiblemodels (models_id, compatible_models) VALUES
     (7, 'LG K40s'),
     (7, 'Note 8'),
 
-    (9, 'iPhone 15 Plus'),
+    (9, 'iPhone 14 Plus'),
     (10, 'iPhone 15'),
     (11, 'iPhone 14'),
     (12, 'Note 10s'),
@@ -87,3 +95,11 @@ INSERT INTO compatiblemodels (models_id, compatible_models) VALUES
     (15, 'Poco C55'),
     (15, 'Poco C53'),
     (15, 'Poco C35'),
+    (16, 'Note 12s'),
+    (17, 'Note 11s'),
+    (18, 'iPhone 12 Pro'),
+    (19, 'iPhone 13 Pro'),
+    (19, 'iPhone 14'),
+    (1, 'M13'),
+    (1, 'A32'),
+    (20, 'S20 Fe'),
