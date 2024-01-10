@@ -16,6 +16,7 @@ CREATE TABLE compatibleModels (
     compatible_models VARCHAR(255) NOT NULL
 );
 
+-- input 
 INSERT INTO brand (name) VALUES
     ('Samsung'),
     ('iPhone'),
@@ -37,7 +38,10 @@ INSERT INTO models (name, brand_id) VALUES
 10-   ('iPhone 15 Pro', 2),
 11-   ('iPhone 14 Pro', 2),
 12-   ('Note 10', 5),
+13-   ('A01', 1),
+14-   ('Note 12 Pro', 5),
 
+-- deixar so o nome sem a marca antes
 INSERT INTO compatiblemodels (models_id, compatible_models) VALUES
     (1, 'A13'),
     (1, 'A22'),
@@ -67,6 +71,7 @@ INSERT INTO compatiblemodels (models_id, compatible_models) VALUES
     (7, 'Moto G7'),
     (7, 'LG K40s'),
     (7, 'Note 8'),
+
     (9, 'iPhone 15 Plus'),
     (10, 'iPhone 15'),
     (11, 'iPhone 14'),
@@ -74,3 +79,6 @@ INSERT INTO compatiblemodels (models_id, compatible_models) VALUES
     (12, 'Poco X3'),
     (12, 'Poco X3 GT'),
     (12, 'Note 9T'),
+    (13, 'M01'),
+    (14, 'Poco X5'),
+    (14, 'Poco X5 Pro'),
