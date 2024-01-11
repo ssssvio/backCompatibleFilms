@@ -1,3 +1,8 @@
+
+DROP TABLE brand;
+DROP TABLE models;
+DROP TABLE compatibleModels;
+
 -- Reiniciar a sequência para a tabela brand
 SELECT setval('brand_id_seq', 1, false);
 
@@ -6,10 +11,6 @@ SELECT setval('models_id_seq', 1, false);
 
 -- Reiniciar a sequência para a tabela compatibleModels
 SELECT setval('compatiblemodels_id_seq', 1, false);
-
-DROP TABLE brand;
-DROP TABLE models;
-DROP TABLE compatibleModels;
 
 CREATE TABLE brand (
     id SERIAL PRIMARY KEY,
