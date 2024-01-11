@@ -1,25 +1,33 @@
-const { queryModelsByName } = require("../utils/queryConsult");
+const { queryModelsByName } = require("../utils/query/queryModelsByName");
 const { schemaListen } = require("../utils/schemaListen");
+const { notFoundError, successStatusCode, notFoundModel } = require("../utils/err/errors");
+const { isValidModel } = require("../utils/query/queryIsValidModel");
 
 async function listenFilms(dataFilm) {
-    const { name } = dataFilm;
+    const { brandId, name } = dataFilm;
 
     try {
-
-        await schemaListen.validateAsync(dataFilm);
         const upName = name.toUpperCase();
+        await schemaListen.validateAsync({ name });
+
+        const compatible = await isValidModel(brandId, upName);
+        if (!compatible) return { error: notFoundModel.message, statusCode: notFoundModel.statusCode };
+
+
+
         const modelsResult = await queryModelsByName(upName);
-        if (!modelsResult) return { error: "Film not found!", statusCode: 404 };
+        if (!modelsResult) return { error: notFoundError.message, statusCode: notFoundError.statusCode };
+
         const consultModels = modelsResult.compatiblemodels;
 
         if (consultModels.length < 2) {
             const reModelName = modelsResult.modelName.toUpperCase();
             const reModelsResult = await queryModelsByName(reModelName);
-            if (!reModelsResult) return { error: "Film not found!", statusCode: 404 };
-            return { success: true, data: reModelsResult, statusCode: 200 };
+            if (!reModelsResult) return { error: notFoundError.message, statusCode: notFoundError.statusCode };
+            return { success: true, data: reModelsResult, statusCode: successStatusCode };
         }
 
-        return { success: true, data: modelsResult, statusCode: 200 };
+        return { success: true, data: modelsResult, statusCode: successStatusCode };
 
     } catch (error) {
         const statusCode = error.statusCode || 400;

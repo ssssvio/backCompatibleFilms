@@ -1,4 +1,4 @@
-const { knexdb } = require("../db/conection");
+const { knexdb } = require("../../db/conection");
 
 async function queryModelsByName(name) {
     return knexdb('models')
