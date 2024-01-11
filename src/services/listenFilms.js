@@ -1,7 +1,7 @@
-const { queryModelsByName } = require("../utils/query/queryModelsByName");
 const { schemaListen } = require("../utils/schemaListen");
-const { notFoundError, successStatusCode, notFoundModel } = require("../utils/err/errors");
 const { isValidModel } = require("../utils/query/queryIsValidModel");
+const { queryModelsByName } = require("../utils/query/queryModelsByName");
+const { notFoundError, successStatusCode, notFoundModel } = require("../utils/err/errors");
 
 async function listenFilms(dataFilm) {
     const { brandId, name } = dataFilm;
