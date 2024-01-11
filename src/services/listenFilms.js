@@ -7,19 +7,19 @@ async function listenFilms(dataFilm) {
     const { brandId, name } = dataFilm;
 
     try {
+
         const upName = name.toUpperCase();
         await schemaListen.validateAsync({ name });
 
-        const compatible = await isValidModel(brandId, upName);
-        if (!compatible) return { error: notFoundModel.message, statusCode: notFoundModel.statusCode };
-
-
+        const checkBrandAndModel = await isValidModel(brandId, upName);
+        if (checkBrandAndModel.brand_id !== brandId) {
+            return { error: notFoundModel.message, statusCode: notFoundModel.statusCode };
+        }
 
         const modelsResult = await queryModelsByName(upName);
         if (!modelsResult) return { error: notFoundError.message, statusCode: notFoundError.statusCode };
 
         const consultModels = modelsResult.compatiblemodels;
-
         if (consultModels.length < 2) {
             const reModelName = modelsResult.modelName.toUpperCase();
             const reModelsResult = await queryModelsByName(reModelName);
