@@ -7,12 +7,13 @@ async function listenFilms(dataFilm) {
     try {
 
         await schemaListen.validateAsync(dataFilm);
-        const modelsResult = await queryModelsByName(name);
+        const upName = name.toUpperCase();
+        const modelsResult = await queryModelsByName(upName);
         if (!modelsResult) return { error: "Film not found!", statusCode: 404 };
         const consultModels = modelsResult.compatiblemodels;
 
         if (consultModels.length < 2) {
-            const reModelName = modelsResult.modelName;
+            const reModelName = modelsResult.modelName.toUpperCase();
             const reModelsResult = await queryModelsByName(reModelName);
             if (!reModelsResult) return { error: "Film not found!", statusCode: 404 };
             return { success: true, data: reModelsResult, statusCode: 200 };
