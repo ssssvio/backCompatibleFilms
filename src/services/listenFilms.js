@@ -12,6 +12,7 @@ async function listenFilms(dataFilm) {
         await schemaListen.validateAsync({ name });
 
         const checkBrandAndModel = await isValidModel(brandId, upName);
+        console.log(checkBrandAndModel);
         if (checkBrandAndModel.brand_id !== brandId) {
             return { error: notFoundModel.message, statusCode: notFoundModel.statusCode };
         }
