@@ -9,10 +9,7 @@ async function listenFilms(dataFilm) {
     try {
 
         const upName = name.toUpperCase();
-
         await schemaListen.validateAsync({ name });
-
-        // erro de query
         const checkBrandAndModel = await isValidModel(brandId, upName);
 
         if (checkBrandAndModel.brand_id !== brandId) {
@@ -33,8 +30,6 @@ async function listenFilms(dataFilm) {
         return { success: true, data: modelsResult, statusCode: successStatusCode };
 
     } catch (error) {
-        console.log(error);
-        console.log("erro aqui em cima:");
         const statusCode = error.statusCode || 400;
         return { success: false, error: error.message, statusCode };
     }
