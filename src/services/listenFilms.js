@@ -10,9 +10,9 @@ async function listenFilms(dataFilm) {
 
         const upName = name.toUpperCase();
         await schemaListen.validateAsync({ name });
-        const checkBrandAndModel = await isValidModel(brandId, upName);
 
-        if (checkBrandAndModel.brand_id !== brandId) {
+        const checkBrandAndModel = await isValidModel(brandId, upName);
+        if (!checkBrandAndModel || checkBrandAndModel.brand_id !== brandId) {
             return { error: notFoundModel.message, statusCode: notFoundModel.statusCode };
         }
 
@@ -22,7 +22,7 @@ async function listenFilms(dataFilm) {
         const consultModels = modelsResult.compatiblemodels;
         if (consultModels.length < 2) {
             const reModelName = modelsResult.modelName.toUpperCase();
-            const reModelsResult = await queryModelsByName(reModelName);
+            const reModelsResult = await queryModelsByName(reModelName); s
             if (!reModelsResult) return { error: notFoundError.message, statusCode: notFoundError.statusCode };
             return { success: true, data: reModelsResult, statusCode: successStatusCode };
         }
