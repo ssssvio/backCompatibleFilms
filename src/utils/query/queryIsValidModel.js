@@ -6,9 +6,6 @@ async function isValidModel(brandId, name) {
         .where(builder => {
             builder.where('models.name', name)
                 .orWhere('compatiblemodels.compatible_models', name);
-            if (brandId) {
-                builder.andWhere('models.brand_id', brandId);
-            }
         })
         .first();
 }
