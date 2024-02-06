@@ -22,7 +22,7 @@ async function listenFilms(dataFilm) {
         const consultModels = modelsResult.compatiblemodels;
         if (consultModels.length < 2) {
             const reModelName = modelsResult.modelName.toUpperCase();
-            const reModelsResult = await queryModelsByName(reModelName); s
+            const reModelsResult = await queryModelsByName(reModelName);
             if (!reModelsResult) return { error: notFoundError.message, statusCode: notFoundError.statusCode };
             return { success: true, data: reModelsResult, statusCode: successStatusCode };
         }
