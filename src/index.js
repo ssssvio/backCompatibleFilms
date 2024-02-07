@@ -5,11 +5,11 @@ const app = express();
 
 const users = require('./routes/users');
 
-app.use(cors({
-    origin: 'https://sincc.netlify.app' // Substitua pelo URL do seu frontend no Netlify
-}));
+const corsOptions = {
+    origin: 'https://sincc.netlify.app',
+};
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(users.routes);
 
